@@ -48,7 +48,7 @@ file_name <- list.files(TEST_DIR, pattern = "*.csv", full.names = TRUE)[1]
 header_line <- readLines(file_name, n = 1)
 col_names <- unlist(strsplit(header_line, split = ",")) # assuming ',' is the delimiter
 # Read the CSV with the exact column names
-df <- read.csv(file_name, skip = 1, col.names = col_names, check.names=FALSE)
+df <- read.csv(file_name, skip = 0, col.names = col_names, check.names=FALSE)
 
 
 # Data preprocessing
@@ -92,9 +92,7 @@ model <- readRDS(PREDICTOR_FILE_PATH)
 predictions <- predict(model, newdata = df)
 
 # Creating predictions DataFrame
-
 predictions_df <- data.frame(prediction = predictions)
-
 predictions_df <- tibble(ids = ids) %>% bind_cols(predictions_df)
 colnames(predictions_df)[1] <- id_feature
 

@@ -53,7 +53,7 @@ file_name <- list.files(TRAIN_DIR, pattern = "*.csv")[1]
 header_line <- readLines(file.path(TRAIN_DIR, file_name), n = 1)
 col_names <- unlist(strsplit(header_line, split = ",")) # assuming ',' is the delimiter
 # Read the CSV with the exact column names
-df <- read.csv(file.path(TRAIN_DIR, file_name), skip = 1, col.names = col_names, check.names=FALSE)
+df <- read.csv(file.path(TRAIN_DIR, file_name), skip = 0, col.names = col_names, check.names=FALSE)
 
 # Data Preprocessing
 # Data preprocessing is very important before training the model, as the data may contain missing values in some cells. 
